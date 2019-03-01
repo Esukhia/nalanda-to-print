@@ -323,10 +323,7 @@ def main(mode):
 
     ok = 0
     no = 0
-    limit = True
     for n in sorted(nalanda_derge):
-        if limit:
-            continue
         if mode != 'all':
             if n.stem != mode:
                 continue
