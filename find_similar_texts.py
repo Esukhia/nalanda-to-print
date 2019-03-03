@@ -1,10 +1,11 @@
-from pathlib import Path
 import re
+from pathlib import Path
 from collections import defaultdict
-
 from helpers import Agreement, pre_process, tib_sort
 from nalanda_formatting import extract_nalanda
 
+# ཡིག་ཆ་ཚང་མ་བཏང་དགོས་ན། all ཞེས་ཕྲིས། ཡིག་ཆ་གཅིག་བཏང་དགོས་ན་དེའི་མིང་ཕྲིས། དཔེར་ན། D1129 ལྟ་བུ།
+mode = "all"
 
 def reinsert_numbers(chunks):
     out = []
@@ -372,8 +373,5 @@ def main(mode):
     # overview.flush()
     # overview.close()
 
-
-# ཡིག་ཆ་ཚང་མ་བཏང་དགོས་ན། all ཞེས་ཕྲིས། ཡིག་ཆ་གཅིག་བཏང་དགོས་ན་དེའི་མིང་ཕྲིས། དཔེར་ན། D1129 ལྟ་བུ།
-mode = "all"
 extract_nalanda()
 main(mode)
