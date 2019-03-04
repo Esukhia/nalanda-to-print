@@ -287,7 +287,7 @@ def log_overview(text, footnotes, overview, filename):
 
     begin = ''.join(pairs[:5])
     end = ''.join(pairs[-5:])
-    overview.write(f',{filename},{begin},{end}\n')
+    overview.write(f',{filename},{begin},{end}\n', encoding='utf-8')
     overview.flush()
 
 
@@ -305,7 +305,7 @@ def main(mode):
         if c.stem in canon_stems:
             nalanda_derge.append(c)
 
-    log = Path('log.txt').open('w')
+    log = Path('log.txt').open('w', -1, encoding='utf-8')
     # overview = Path('overview.csv').open('w')
 
     Path('output').mkdir(exist_ok=True)
@@ -331,26 +331,26 @@ def main(mode):
             if n.stem != mode:
                 continue
         # open and format contents
-        d_content = n.read_text()
+        d_content = n.read_text(encoding='utf-8')
         d_content = format_canon_input(d_content)
-        c_content = Path(c_path / n.name).read_text()
+        c_content = Path(c_path / n.name).read_text(encoding='utf-8')
 
         # get last note number
         d_num = d_content[-1][0]
         c_num = extract_last_note_number(c_content)
 
-        notes_content = Path(Path('canon_notes_input/') / str(n.stem + '.csv')).read_text()
+        notes_content = Path(Path('canon_notes_input/') / str(n.stem + '.csv')).read_text(encoding='utf-8')
         notes = format_notes(notes_content)
 
         # the amount of notes is not the same, so the file can't be processed.
         if abs(d_num - c_num) != 0:
             print(f'{n.name}\tc\t{c_num}\td\t{d_num}')
-            log.write(f'{n.name}\tc\t{c_num}\td\t{d_num}\n')
+            log.write(f'{n.name}\tc\t{c_num}\td\t{d_num}\n', encoding='utf-8')
             no += 1
             text, footnotes = insert_report_notes(d_content, notes)
             report = generate_report(text, footnotes)
             report_file = problem_path / n.name
-            report_file.write_text(report)
+            report_file.write_text(report, encoding='utf-8')
 
 
         # the file can be processed
@@ -362,14 +362,14 @@ def main(mode):
             # log_overview(text, footnotes, overview, n.stem)
             report = generate_report(text, footnotes)
             report_file = log_path / n.name
-            report_file.write_text(report)
+            report_file.write_text(report, encoding='utf-8')
 
             out = format_new_text(text, footnotes)
             final_file = final_path / n.name
-            final_file.write_text(out)
+            final_file.write_text(out, encoding='utf-8')
 
     print(f'files ok: {ok}, note amount discrepancy: {no}')
-    log.write(f'files ok: {ok}, note amount discrepancy: {no}')
+    log.write(f'files ok: {ok}, note amount discrepancy: {no}', encoding='utf-8')
     log.flush()
     log.close()
     # overview.flush()

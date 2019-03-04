@@ -18,7 +18,7 @@ def extract_lines():
     current_work = []
     for file in files:
         prefix = file.stem
-        lines = [line.strip().strip('\ufeff') for line in file.open().readlines()]
+        lines = [line.strip().strip('\ufeff') for line in file.open(encoding='utf-8').readlines()]
         for line in lines:
             toh = re.findall(r'\{(D[0-9]+a?)\}', line)
             if toh:
@@ -132,7 +132,7 @@ def write_works(works):
 
     for work, lines in works:
         out_file = out_path / str(work + '.txt')
-        out_file.write_text('\n'.join(lines))
+        out_file.write_text('\n'.join(lines), encoding='utf-8')
 
 
 def strip_markup(works_stripped):
