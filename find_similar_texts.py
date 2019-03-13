@@ -377,3 +377,4 @@ def main(mode):
 
 extract_nalanda()
 main(mode)
+print('Finished!')
