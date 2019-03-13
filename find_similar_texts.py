@@ -306,7 +306,6 @@ def main(mode):
             nalanda_derge.append(c)
 
     log = Path('log.txt').open('w', -1, encoding='utf-8')
-    # overview = Path('overview.csv').open('w')
 
     Path('output').mkdir(exist_ok=True)
     log_path = Path('output/log')
@@ -345,13 +344,12 @@ def main(mode):
         # the amount of notes is not the same, so the file can't be processed.
         if abs(d_num - c_num) != 0:
             print(f'{n.name}\tc\t{c_num}\td\t{d_num}')
-            log.write(f'{n.name}\tc\t{c_num}\td\t{d_num}\n', encoding='utf-8')
+            log.write(f'{n.name}\tc\t{c_num}\td\t{d_num}\n')
             no += 1
             text, footnotes = insert_report_notes(d_content, notes)
             report = generate_report(text, footnotes)
             report_file = problem_path / n.name
             report_file.write_text(report, encoding='utf-8')
-
 
         # the file can be processed
         else:
@@ -369,12 +367,10 @@ def main(mode):
             final_file.write_text(out, encoding='utf-8')
 
     print(f'files ok: {ok}, note amount discrepancy: {no}')
-    log.write(f'files ok: {ok}, note amount discrepancy: {no}', encoding='utf-8')
+    log.write(f'files ok: {ok}, note amount discrepancy: {no}')
     log.flush()
     log.close()
-    # overview.flush()
-    # overview.close()
+
 
 extract_nalanda()
 main(mode)
-print('Finished!')
