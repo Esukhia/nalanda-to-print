@@ -5,7 +5,7 @@ from collections import defaultdict
 from helpers import Agreement, pre_process, tib_sort
 from nalanda_formatting import extract_nalanda
 
-# ཡིག་ཆ་ཚང་མ་བཏང་དགོས་ན། all ཞེས་ཕྲིས། ཡིག་ཆ་གཅིག་བཏང་དགོས་ན་དེའི་མིང་ཕྲིས། དཔེར་ན། D1129 ལྟ་བུ།
+# ཡིག་ཆ་ཚང་མ་བཏང་དགོས་ན། all ཞེས་ཕྲིས། ཡིག་ཆ་གཅིག་བཏང་དགོས་ན་དེའི་མིང་ཕྲིས། དཔེར་ན། "D1129" ལྟ་བུ།
 mode = "all"
 
 
@@ -344,8 +344,9 @@ def main(mode):
 
         # the amount of notes is not the same, so the file can't be processed.
         if abs(d_num - c_num) != 0:
+          
             print(f'{n.name}\tc\t{c_num}\td\t{d_num}')
-            log.write(f'{n.name}\tc\t{c_num}\td\t{d_num}\n', encoding='utf-8')
+            log.write(f'{n.name}\tc\t{c_num}\td\t{d_num}\n')
             no += 1
             text, footnotes = insert_report_notes(d_content, notes)
             report = generate_report(text, footnotes)
