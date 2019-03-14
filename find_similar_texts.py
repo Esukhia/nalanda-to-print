@@ -306,6 +306,7 @@ def main(mode):
             nalanda_derge.append(c)
 
     log = Path('log.txt').open('w', -1, encoding='utf-8')
+    # overview = Path('overview.csv').open('w')
 
     Path('output').mkdir(exist_ok=True)
     log_path = Path('output/log')
@@ -352,6 +353,7 @@ def main(mode):
             report_file = problem_path / n.name
             report_file.write_text(report, encoding='utf-8')
 
+
         # the file can be processed
         else:
             print('\t', n.name)
@@ -368,10 +370,11 @@ def main(mode):
             final_file.write_text(out, encoding='utf-8')
 
     print(f'files ok: {ok}, note amount discrepancy: {no}')
-    log.write(f'files ok: {ok}, note amount discrepancy: {no}')
+    log.write(f'files ok: {ok}, note amount discrepancy: {no}', encoding='utf-8')
     log.flush()
     log.close()
-
+    # overview.flush()
+    # overview.close()
 
 extract_nalanda()
 main(mode)
