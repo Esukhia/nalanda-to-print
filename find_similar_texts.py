@@ -370,7 +370,7 @@ def main(mode):
             final_file.write_text(out, encoding='utf-8')
 
     print(f'files ok: {ok}, note amount discrepancy: {no}')
-    log.write(f'files ok: {ok}, note amount discrepancy: {no}', encoding='utf-8')
+    log.write(f'files ok: {ok}, note amount discrepancy: {no}')
     log.flush()
     log.close()
     # overview.flush()
