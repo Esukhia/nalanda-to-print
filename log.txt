@@ -1,16 +1,1 @@
-D1133.txt	c	14	d	13
-D1771.txt	c	30	d	1
-D2277.txt	c	10	d	8
-D2278.txt	c	122	d	124
-D2659.txt	c	8	d	19
-D2701.txt	c	29	d	28
-D2702.txt	c	86	d	85
-D2736.txt	c	180	d	1
-D2736a.txt	c	33	d	32
-D3687.txt	c	9	d	10
-D3787.txt	c	2684	d	2683
-D3955.txt	c	15	d	16
-D3956.txt	c	16	d	15
-D4011.txt	c	317	d	318
-D4041.txt	c	434	d	435
-files ok: 313, note amount discrepancy: 15
+files ok: 1, note amount discrepancy: 0
