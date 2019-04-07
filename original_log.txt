@@ -1,0 +1,10 @@
+D1771.txt	c	30	d	1
+D2659.txt	c	8	d	19
+D2736.txt	c	180	d	1
+
+D3787.txt	c	2684	d	2683
+D3955.txt	c	15	d	16
+D3956.txt	c	16	d	15
+D4011.txt	c	317	d	318
+D4041.txt	c	434	d	435
+files ok: 313, note amount discrepancy: 15
