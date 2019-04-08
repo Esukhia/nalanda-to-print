@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import re
 
 
@@ -9,7 +10,7 @@ def extract_lines():
     return:
         {toh1: [(vol_id, line1), (vol_id, line2), ...], toh2: ...}
     """
-    in_path = Path('derge-tengyur-tags')
+    in_path = Path(os.path.join(Path.cwd().parent, 'derge-tengyur/text'))
     files = sorted(list(in_path.glob('*.txt')))
     missing_inc = 1
 
