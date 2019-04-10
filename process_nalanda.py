@@ -6,7 +6,7 @@ from helpers import Agreement, pre_process, tib_sort
 from nalanda_formatting import extract_nalanda
 
 # ཡིག་ཆ་ཚང་མ་བཏང་དགོས་ན། "all" ཞེས་ཕྲིས། ཡིག་ཆ་གཅིག་བཏང་དགོས་ན་དེའི་མིང་ཕྲིས། དཔེར་ན། "D1129" ལྟ་བུ།
-mode = "D2659"
+mode = "D4041"
 
 
 def reinsert_numbers(chunks):

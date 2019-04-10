@@ -1,2 +1,1 @@
-D2659.txt	c	8	d	20
-files ok: 0, note amount discrepancy: 1
+files ok: 1, note amount discrepancy: 0
