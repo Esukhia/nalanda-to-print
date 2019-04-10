@@ -1,1 +1,2 @@
-files ok: 1, note amount discrepancy: 0
+D4041.txt	c	434	d	435
+files ok: 0, note amount discrepancy: 1
