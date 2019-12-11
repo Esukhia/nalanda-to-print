@@ -252,11 +252,11 @@ def format_new_text(text, footnotes):
 def insert_notes_in_text(text, footnotes):
     l_text, l_note = len(text), len(footnotes)
     if l_text < l_note:
-        text.extend(['' for t in range(abs(l_text - l_note))])
+        text.extend(['' for _ in range(abs(l_text - l_note))])
     if l_note < l_text:
-        footnotes.extend(['' for t in range(abs(l_text - l_note))])
+        footnotes.extend(['' for _ in range(abs(l_text - l_note))])
 
-    pairs = [f'{t}【{n}】' for t, n in zip(text, footnotes)]
+    pairs = [f'{t},【{n}】' for t, n in zip(text, footnotes)]
     return pairs
 
 
@@ -278,8 +278,9 @@ def generate_report(text, footnotes):
 
     report = []
     for a, b in parts:
-        report.append(''.join(pairs[a:b]))
-    return '\n\n'.join(report)
+        parts = [re.sub(r'([^\[]+)(\[\^[^\]]+\])\,【\[\^[^\]]+\]\:([^】]+)】', r'\1,\3,\2', a) for a in pairs[a:b]]
+        report.append('\n'.join(parts))
+    return '\n,\n'.join(report)
 
 
 def log_overview(text, footnotes, overview, filename):
@@ -362,7 +363,7 @@ def main(mode):
             text, footnotes = insert_notes(d_content, notes)
             # log_overview(text, footnotes, overview, n.stem)
             report = generate_report(text, footnotes)
-            report_file = log_path / n.name
+            report_file = log_path / (n.stem + '.csv')
             report_file.write_text(report, encoding='utf-8')
 
             out = format_new_text(text, footnotes)
